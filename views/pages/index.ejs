@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <section>
+    <button><a href="/movies">Action</a></button>
+  </section>
+
+  <section id="movies-section">
+    <% data.results.forEach(element => { %>
+    <div>
+      <a href=<%=`/movies/${element.id}`%>><img src=<%=`http://image.tmdb.org/t/p/w500${element.poster_path}`%>></a>
+      <p><%= element.title%></p>
+    </div>
+    <% }) %>
+  </section>
+  <section id="buttons">
+    <% if(myMovie>=5) {%>
+    <% for( let i = myMovie-4; i < myMovie+5; i++ ) { %>
+    <button><a href=<%= `/movies/api/${myMovie}` %>><%= `${i}` %></a></button>
+    <% } %>
+    <% } %>
+    <% if(myMovie<5) {%>
+    <% for( let i = 1; i < 10; i++ ) { %>
+    <button><a href=<%= `/movies/api/${myMovie}` %>><%= `${i}` %></a></button>
+    <% } %>
+    <% } %>
+  </section>
+  <script src="/main.js"></script>
+</body>
+
+</html>
