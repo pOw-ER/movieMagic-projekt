@@ -10,36 +10,35 @@
 </head>
 
 <body>
-  <section>
+  <section id="movie-details">
     <div id="hero">
       <img src=<%=`http://image.tmdb.org/t/p/w780${movie.poster_path}`%>>
     </div>
-    <div>
-      <div>
-        <img src="/vector.png" alt="">
-        <p><span><%= movie.vote_average %></span>/10</p>
-        <p><%= movie.vote_count %></p>
-      </div>
-      <div>
-        <%= movie.overview %>
-      </div>
-      <div>
+    <div id="details">
+      <h1><%= movie.title %></h1>
+      <span><%= movie.status %> at </span><span><%= movie.release_date %></span>
+      <div id="details-genres">
         <% movie.genres.forEach(element => { %>
-        <span><%= element.name %> </span>
+        <span><%= element.name %></span>
         <% }) %>
       </div>
-      <div>
-        <%= movie.popularity %>
+      <div id="vote-details">
+        <div>
+          <img src="/vector.png" alt="">
+        </div>
+        <div>
+          <p><span><%= movie.vote_average %></span>/10</p>
+          <p>voted :<%= movie.vote_count %></p>
+          <p>popularity: <%= movie.popularity %></p>
+        </div>
       </div>
       <div>
-        <%= movie.release_date %>
+        <h2>Summary</h2>
+        <p><%= movie.overview %></p>
       </div>
-      <div>
 
-        <%= movie.status %>
-      </div>
       <div>
-        <a href=<%= movie.homepage%>>Hier</a>
+        <a href=<%= movie.homepage%>>Click here to watch...</a>
       </div>
     </div>
   </section>

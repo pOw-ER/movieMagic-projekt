@@ -47,7 +47,7 @@ getData("", myPage)
     app.get("/movies/:id", (req, res) => {
       getDetail(req.params.id)
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           res.render("pages/movieDetails", { movie: data })
         })
 
@@ -118,6 +118,21 @@ getData("", myPage)
           res.render("pages/index", { data: data.results, myPage })
         })
     })
+    // let word;
+    // app.post('/search', (req, res) => {
+    //   console.log(req.body.input)
+    //   word = req.body.input;
+    //   res.redirect(`/search/${req.body.searchInput}/1`)
+    // })
+
+    // app.get('/search/:word/:page', (req, res) => {
+    //   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MY_API_KEY}&language=en-US&query=${req.params.word}&page=${req.params.page}&include_adult=false`)
+    //     .then(result => result.json())
+    //     .then(data => {
+    //       console.log(data);
+    //       res.render('pages/search', { data: data.results, page: req.params.page })
+    //     })
+    // })
   })
 
 
