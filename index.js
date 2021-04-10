@@ -118,6 +118,13 @@ getData("", myPage)
           res.render("pages/index", { data: data.results, myPage })
         })
     })
+    app.get("/movies/genres/fantasy", (req, res) => {
+      let myPage = 1
+      getData("14", myPage)
+        .then((data) => {
+          res.render("pages/index", { data: data.results, myPage })
+        })
+    })
     // let word;
     // app.post('/search', (req, res) => {
     //   console.log(req.body.input)
