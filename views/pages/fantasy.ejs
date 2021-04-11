@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Movies</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="/">
+        <h1>MAGI<span id="logo">CM</span>OVIE</h1>
+      </a>
+    </div>
+    <form id="content" action="/search" method="POST">
+      <input type="text" name="input" class="input" id="search-input">
+      <button type="reset" class="search" id="search-btn"></button>
+    </form>
+  </header>
+  <section class="genres">
+    <h1>Fantasy Movies</h1>
+  </section>
+  <section id="movies-section">
+    <% data.forEach(element => { %>
+    <div id="movie-card">
+      <a href=<%=`/movies/${element.id}`%>><img src=<%=`http://image.tmdb.org/t/p/w780${element.poster_path}`%>></a>
+      <p class="movie-title"><%= element.title%></p>
+      <p class="vote"><img src="/Vector.png" alt=""><span id="vote-id"><%= element.vote_average %></span>/<span
+          id="vote-nr">10</span></p>
+    </div>
+    <% }) %>
+  </section>
+  <section id="buttons">
+    <% let myPage1 = parseInt(myPage)%>
+    <% let gold="#030305" %>
+    <% if (myPage1>=11) { %>
+    <button><a href=<%=`/movies/genres/fantasy/${myPage1-10}` %>>&lt; &lt;</a></button>
+    <% } else { %>
+    <button><a href=<%=`/movies/genres/fantasy/1` %>>&lt; &lt;</a></button>
+    <% } %>
+    <% if (myPage1>=2) { %>
+    <button><a href=<%=`/movies/genres/fantasy/${myPage1-1}` %>>&lt;</a></button>
+    <% } else { %>
+    <button><a href=<%=`/movies/genres/fantasy/1` %>>&lt;</a></button>
+    <% } %>
+    <% if (myPage1>=5 && myPage1<totalPages-10) { %>
+    <% for( let index=myPage1-4; index < myPage1+5; index++ ) { %>
+    <button style=<%=`background:${index==myPage1?gold:''}`%>><a style=<%=`background:${index==myPage1?gold:''}`%>
+        href=<%=`/movies/genres/fantasy/${index}` %>><%= index %></a></button>
+    <% } %>
+    <% } else if(myPage1>=totalPages-10) {%>
+    <% for( let index=myPage1-4; index <=totalPages; index++ ) { %>
+    <button style=<%=`background:${index==myPage1?gold:''}`%>><a style=<%=`background:${index==myPage1?gold:''}`%>
+        href=<%=`/movies/genres/fantasy/${index}` %>><%= index %></a></button>
+    <% } %>
+    <% } else {%>
+    <% for( let index=1; index < 10; index++ ) { %>
+    <button style=<%=`background:${index==myPage1?gold:''}`%>><a style=<%=`background:${index==myPage1?gold:''}`%>
+        href=<%=`/movies/genres/fantasy/${index}` %>><%= index %></a></button>
+    <% } %>
+    <% } %>
+
+    <% if (myPage1<=totalPages-1) { %>
+    <button><a href=<%=`/movies/genres/fantasy/${myPage1+1}` %>>&gt;</a></button>
+    <% } else { %>
+    <button><a href=<%=`/movies/genres/fantasy/${totalPages}` %>>&gt;</a></button>
+    <% } %>
+    <% if (myPage1<=totalPages-11) { %>
+    <button><a href=<%=`/movies/genres/fantasy/${myPage1+10}` %>>&gt;&gt;</a></button>
+    <% } else { %>
+    <button><a href=<%=`/movies/genres/fantasy/${totalPages}` %>>&gt;&gt;</a></button>
+    <% } %>
+  </section>
+  <script src="/main.js"></script>
+</body>
+
+</html>

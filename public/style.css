@@ -1,12 +1,12 @@
 * {
-  background-color: #121212;
+  background-color: #030305;
   margin: 0;
   color: #ffffff;
 }
 #movies-section {
   padding: 40px 8%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
 }
 #movies-section div p {
@@ -14,10 +14,25 @@
 }
 #movies-section > div > a img {
   width: 100%;
+  border-radius: 5px;
 }
 
 #buttons {
   text-align: center;
+  padding: 10px 0 50px;
+}
+#buttons a {
+  text-decoration: none;
+  font-size: 18px;
+  background-color: #efb730;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+#buttons button {
+  border: none;
+
+  background-color: #efb730;
+  padding: 0;
 }
 .genres {
   padding: 15px 8%;
@@ -28,23 +43,26 @@
 .genres span {
   margin-bottom: 30px;
 }
+.genres h1 {
+  text-align: center;
+}
 .genres span a {
   font-size: 18px;
   text-decoration: none;
   color: #fff;
   padding: 10px 30px;
-  border: 1px solid #f2a365;
+  border: 1px solid #efb730;
   border-radius: 3px;
-  background-color: #f2a365;
+  background-color: #efb730;
   transition: all 0.7s;
 }
 .genres span a:hover {
   text-decoration: underline;
   color: #fff;
   padding: 10px 30px;
-  border: 1px solid #f2a365;
+  border: 1px solid #efb730;
   border-radius: 3px;
-  background-color: #121212;
+  background-color: #030305;
 }
 
 /************ movie details seite ****************/
@@ -68,6 +86,13 @@
   font-size: 24px;
   letter-spacing: 1.5px;
   line-height: 30px;
+}
+#details > span:nth-of-type(1) {
+  font-size: 18px;
+}
+#datum {
+  color: #efb730;
+  font-size: 18px;
 }
 #details h1 {
   font-size: 3rem;
@@ -96,12 +121,12 @@
 #vote-details span {
   font-size: 36px;
   font-weight: bold;
-  color: chocolate;
+  color: #efb730;
 }
 #vote-details div:nth-of-type(2) p:nth-of-type(2),
 #vote-details div:nth-of-type(2) p:nth-of-type(3) {
   font-size: 14px;
-  color: chocolate;
+  color: #efb730;
 }
 #vote-details img {
   width: 50px;
@@ -128,11 +153,11 @@ header {
   overflow: hidden;
 }
 header h1 {
-  color: #f2a365;
+  color: #efb730;
 }
 #logo {
   font-size: 44px;
-  color: #f2a365;
+  color: #efb730;
 }
 
 /* serach button */
@@ -161,7 +186,7 @@ header h1 {
   box-sizing: border-box;
   width: 50px;
   height: 50px;
-  border: 4px solid #f2a365;
+  border: 4px solid #efb730;
   border-radius: 50%;
   background: none;
   color: #fff;
@@ -256,7 +281,7 @@ header h1 {
   padding: 0 40px 0 10px;
   width: 300px;
   height: 50px;
-  border: 4px solid #f2a365;
+  border: 4px solid #efb730;
   border-radius: 0;
   background: none;
   color: #fff;

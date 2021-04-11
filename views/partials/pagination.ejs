@@ -1,0 +1,42 @@
+<section id="buttons">
+  <% let myPage1 = parseInt(myPage)%>
+  <% let gold="#030305" %>
+  <% if (myPage1>=11) { %>
+  <button><a href=<%=`/movies/api/${myPage1-10}` %>>&lt; &lt;</a></button>
+  <% } else { %>
+  <button><a href=<%=`/movies/api/1` %>>&lt; &lt;</a></button>
+  <% } %>
+  <% if (myPage1>=2) { %>
+  <button><a href=<%=`/movies/api/${myPage1-1}` %>>&lt;</a></button>
+  <% } else { %>
+  <button><a href=<%=`/movies/api/1` %>>&lt;</a></button>
+  <% } %>
+
+  <% if (myPage1>=5 && myPage1<490) { %>
+  <% for( let index=myPage1-4; index < myPage1+5; index++ ) { %>
+  <button style=<%=`background:${index==myPage1?gold:''}`%>><a style=<%=`background:${index==myPage1?gold:''}`%>
+      href=<%=`/movies/api/${index}` %>><%= index %></a></button>
+  <% } %>
+  <% } else if(myPage1>=490) {%>
+  <% for( let index=myPage1-4; index <=500; index++ ) { %>
+  <button style=<%=`background:${index==myPage1?gold:''}`%>><a style=<%=`background:${index==myPage1?gold:''}`%>
+      href=<%=`/movies/api/${index}` %>><%= index %></a></button>
+  <% } %>
+  <% } else {%>
+  <% for( let index=1; index < 10; index++ ) { %>
+  <button style=<%=`background:${index==myPage1?gold:''}`%>><a style=<%=`background:${index==myPage1?gold:''}`%>
+      href=<%=`/movies/api/${index}` %>><%= index %></a></button>
+  <% } %>
+  <% } %>
+
+  <% if (myPage1<=499) { %>
+  <button><a href=<%=`/movies/api/${myPage1+1}` %>>&gt;</a></button>
+  <% } else { %>
+  <button><a href=<%=`/movies/api/500` %>>&gt;</a></button>
+  <% } %>
+  <% if (myPage1<=489) { %>
+  <button><a href=<%=`/movies/api/${myPage1+10}` %>>&gt;&gt;</a></button>
+  <% } else { %>
+  <button><a href=<%=`/movies/api/500` %>>&gt;&gt;</a></button>
+  <% } %>
+</section>

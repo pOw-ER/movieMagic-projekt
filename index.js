@@ -66,28 +66,44 @@ getData("", myPage)
       let myPage = 1
       getData("28", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/action", { data: data.results, myPage, totalPages: data.total_pages })
         })
     })
-    // app.get("/movies/genres/action/:id", (req, res) => {
-    //   getDetail(req.params.id)
-    //     .then((data) => {
-    //       res.render("pages/movieDetails", { movie: data })
-    //     })
+    app.get("/movies/genres/action/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("28", myPage)
+        .then((data) => {
+          console.log(data);
+          res.render("pages/action", { data: data.results, myPage, totalPages: data.total_pages })
+        })
 
-    // })
+    })
     app.get("/movies/genres/drama", (req, res) => {
       let myPage = 1
       getData("18", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/drama", { data: data.results, myPage, totalPages: data.total_pages })
+        })
+    })
+    app.get("/movies/genres/drama/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("18", myPage)
+        .then((data) => {
+          res.render("pages/drama", { data: data.results, myPage, totalPages: data.total_pages })
         })
     })
     app.get("/movies/genres/comedy", (req, res) => {
       let myPage = 1
       getData("35", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/comedy", { data: data.results, myPage, totalPages: data.total_pages })
+        })
+    })
+    app.get("/movies/genres/comedy/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("35", myPage)
+        .then((data) => {
+          res.render("pages/comedy", { data: data.results, myPage, totalPages: data.total_pages })
         })
     })
     app.get("/movies/genres/crime", (req, res) => {
@@ -101,45 +117,74 @@ getData("", myPage)
       let myPage = 1
       getData("27", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/horror", { data: data.results, myPage, totalPages: data.total_pages })
+        })
+    })
+    app.get("/movies/genres/horror/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("27", myPage)
+        .then((data) => {
+          res.render("pages/horror", { data: data.results, myPage, totalPages: data.total_pages })
         })
     })
     app.get("/movies/genres/science_fiction", (req, res) => {
       let myPage = 1
       getData("878", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/sfiction", { data: data.results, myPage, totalPages: data.total_pages })
+        })
+    })
+    app.get("/movies/genres/science_fiction/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("878", myPage)
+        .then((data) => {
+          res.render("pages/sfiction", { data: data.results, myPage, totalPages: data.total_pages })
         })
     })
     app.get("/movies/genres/thriller", (req, res) => {
       let myPage = 1
       getData("53", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/thriller", { data: data.results, myPage, totalPages: data.total_pages })
         })
+    })
+    app.get("/movies/genres/thriller/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("53", myPage)
+        .then((data) => {
+          res.render("pages/thriller", { data: data.results, myPage, totalPages: data.total_pages })
+        })
+
     })
     app.get("/movies/genres/fantasy", (req, res) => {
       let myPage = 1
       getData("14", myPage)
         .then((data) => {
-          res.render("pages/index", { data: data.results, myPage })
+          res.render("pages/fantasy", { data: data.results, myPage, totalPages: data.total_pages })
         })
     })
-    // let word;
-    // app.post('/search', (req, res) => {
-    //   console.log(req.body.input)
-    //   word = req.body.input;
-    //   res.redirect(`/search/${req.body.searchInput}/1`)
-    // })
+    app.get("/movies/genres/fantasy/:id", (req, res) => {
+      let myPage = req.params.id
+      getData("14", myPage)
+        .then((data) => {
+          res.render("pages/fantasy", { data: data.results, myPage, totalPages: data.total_pages })
+        })
+    })
+    let word;
+    app.post('/search', (req, res) => {
+      console.log(req.body.input)
+      word = req.body.input;
+      res.redirect(`/search/${req.body.input}/1`)
+    })
 
-    // app.get('/search/:word/:page', (req, res) => {
-    //   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MY_API_KEY}&language=en-US&query=${req.params.word}&page=${req.params.page}&include_adult=false`)
-    //     .then(result => result.json())
-    //     .then(data => {
-    //       console.log(data);
-    //       res.render('pages/search', { data: data.results, page: req.params.page })
-    //     })
-    // })
+    app.get('/search/:word/:page', (req, res) => {
+      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MY_API_KEY}&language=en-US&query=${req.params.word}&page=${req.params.page}&include_adult=false`)
+        .then(result => result.json())
+        .then(data => {
+          console.log(data);
+          res.render('pages/search', { data: data.results, totalPages: data.total_pages, myPage: req.params.page, word: req.params.word })
+        })
+    })
   })
 
 
