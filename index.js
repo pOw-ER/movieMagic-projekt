@@ -50,7 +50,6 @@ getData("", myPage)
           // console.log(data);
           res.render("pages/movieDetails", { movie: data })
         })
-
     })
     app.get("/movies/api/:id", (req, res) => {
       let myPage = req.params.id
@@ -58,7 +57,6 @@ getData("", myPage)
         .then((data) => {
           res.render("pages/index", { data: data.results, myPage })
         })
-
     })
 
     ///// GENRES /////////
@@ -76,7 +74,6 @@ getData("", myPage)
           console.log(data);
           res.render("pages/action", { data: data.results, myPage, totalPages: data.total_pages })
         })
-
     })
     app.get("/movies/genres/drama", (req, res) => {
       let myPage = 1
@@ -154,7 +151,6 @@ getData("", myPage)
         .then((data) => {
           res.render("pages/thriller", { data: data.results, myPage, totalPages: data.total_pages })
         })
-
     })
     app.get("/movies/genres/fantasy", (req, res) => {
       let myPage = 1

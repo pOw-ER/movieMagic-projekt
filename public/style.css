@@ -144,6 +144,11 @@
   font-size: 18px;
   font-weight: bold;
 }
+#big-image {
+  height: 80vh;
+  background: url("https://c4.wallpaperflare.com/wallpaper/579/921/292/amazing-spider-man-new-marvel-s-the-amazing-spider-man-movie-poster-wallpaper-preview.jpg")
+    center/cover no-repeat;
+}
 header {
   position: relative;
   display: flex;
