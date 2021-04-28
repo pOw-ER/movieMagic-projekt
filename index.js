@@ -1,6 +1,8 @@
 const { response } = require('express')
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const FavoriteItem = require('./models/favoritenItems')
 const fetch = require('node-fetch');
 require('dotenv').config()
 const PORT = process.env.PORT || 3003
@@ -10,9 +12,14 @@ const PORT = process.env.PORT || 3003
 
 app.set('view engine', 'ejs')
 
-app.listen(PORT, () => {
-  console.log(`listening at localhost ${PORT}`);
-})
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`listening at localhost ${PORT}`);
+    })
+  })
+  .catch(err => console.log(err))
+
 
 app.use(express.static('public'))
 
@@ -47,7 +54,7 @@ getData("", myPage)
     app.get("/movies/:id", (req, res) => {
       getDetail(req.params.id)
         .then((data) => {
-          // console.log(data);
+          console.log(data);
           res.render("pages/movieDetails", { movie: data })
         })
     })
@@ -58,7 +65,30 @@ getData("", myPage)
           res.render("pages/index", { data: data.results, myPage })
         })
     })
-
+    app.get("/favorite/:id", (req, res) => {
+      getDetail(req.params.id)
+        .then((data) => {
+          // console.log(data);
+          new FavoriteItem({
+            _id: data.id,
+            title: data.title,
+            poster_path: data.poster_path
+          }).save();
+          res.redirect('/')
+        })
+    })
+    app.get('/movie/favorites', (req, res) => {
+      FavoriteItem.find()
+        .then(movies => {
+          res.render('pages/favorites', { movies: movies })
+        })
+    })
+    app.get('/movie/delete/:id', (req, res) => {
+      FavoriteItem.findOneAndDelete(req.params.id)
+        .then(movies => {
+          res.redirect('/')
+        })
+    })
     ///// GENRES /////////
     app.get("/movies/genres/action", (req, res) => {
       let myPage = 1
