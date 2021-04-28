@@ -132,6 +132,20 @@
   width: 50px;
 }
 /************ movie details seite endet hier****************/
+
+/************ favorite movies seite fängt hier an ****************/
+
+#favorite-movies-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+  text-align: center;
+  padding: 100px 5%;
+}
+#favorite-movies-section img {
+  width: 100%;
+}
+/************ favorite movies seite endet hier ****************/
 .vote > img {
   width: 20px;
 }
