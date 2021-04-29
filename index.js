@@ -84,7 +84,7 @@ getData("", myPage)
         })
     })
     app.get('/movie/delete/:id', (req, res) => {
-      FavoriteItem.findOneAndRemove(req.params.id)
+      FavoriteItem.findByIdAndDelete(req.params.id)
         .then(movies => {
           res.redirect('/')
         })
